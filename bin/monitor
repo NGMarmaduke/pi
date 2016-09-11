@@ -4,10 +4,15 @@ $LOAD_PATH.unshift(File.expand_path('../lib', File.dirname(__FILE__)))
 require 'pi'
 if Pi.gpio_available?
   require 'pi/monitors/next_bus'
+  require 'pi/monitors/people_home'
+
   next_bus_monitor = Pi::Monitors::NextBus.new
+  people_home = Pi::Monitors::PeopleHome.new
 end
 
 Pi.loop_with_error_handling(sleep_for: 15) do
-  next_bus_monitor.perform if Pi.gpio_available?
-
+  if Pi.gpio_available?
+    next_bus_monitor.perform
+    people_home.perform
+  end
 end
