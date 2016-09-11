@@ -5,6 +5,7 @@ GEM
     coderay (1.1.1)
     domain_name (0.5.20160826)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.1.1)
     http (2.0.3)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -29,6 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   http
   pry
   wiringpi2

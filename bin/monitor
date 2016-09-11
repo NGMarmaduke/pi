@@ -2,10 +2,12 @@
 $LOAD_PATH.unshift(File.expand_path('../lib', File.dirname(__FILE__)))
 
 require 'pi'
+if Pi.gpio_available?
+  require 'pi/monitors/next_bus'
+  next_bus_monitor = Pi::Monitors::NextBus.new
+end
 
-next_bus_monitor = Pi::Monitors::NextBus.new
+Pi.loop_with_error_handling(sleep_for: 15) do
+  next_bus_monitor.perform if Pi.gpio_available?
 
-loop do
-  next_bus_monitor.perform
-  sleep(15)
 end
