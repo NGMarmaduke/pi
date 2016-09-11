@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(File.expand_path('../lib', File.dirname(__FILE__)))
 require 'dotenv'
 Dotenv.load
 
-require 'pi'
-require 'pry'
+require 'rubygems'
+require 'daemons'
 
-binding.pry
+Daemons.run('bin/monitor')

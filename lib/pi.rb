@@ -1,7 +1,5 @@
 require 'logger'
 require 'multi_io'
-require 'dotenv'
-Dotenv.load
 
 module Pi
   module_function
