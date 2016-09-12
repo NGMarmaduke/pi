@@ -22,8 +22,8 @@ module Pi
 
   def logger
     @logger ||= begin
-      log_file = File.open("log/pi.log", "a")
-      Logger.new(MultiIO.new(STDOUT, log_file))
+      # log_file = File.open("log/pi.log", "a")
+      Logger.new(MultiIO.new(STDOUT))
     end
   end
 end

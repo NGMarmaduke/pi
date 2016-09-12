@@ -11,6 +11,11 @@ if Pi.gpio_available?
 end
 
 Pi.loop_with_error_handling(sleep_for: 15) do
+  t = Time.now
+  start_time = Time.local(t.year, t.month, t.day, 7, 00)
+  end_time = Time.local(t.year, t.month, t.day, 23, 30)
+  next unless t.between?(start_time, end_time)
+
   if Pi.gpio_available?
     next_bus_monitor.perform
     people_home.perform
